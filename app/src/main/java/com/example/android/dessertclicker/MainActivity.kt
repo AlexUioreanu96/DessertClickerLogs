@@ -18,7 +18,6 @@ package com.example.android.dessertclicker
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -32,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private var revenue = 0
     private var dessertsSold = 0
+    private lateinit var dessertTimer: DessertTimer
 
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var dessertTimer = DessertTimer()
 
         Timber.i("onCreate called")
 
@@ -153,6 +155,7 @@ class MainActivity : AppCompatActivity() {
     /** Lifecycle Methods **/
     override fun onStart() {
         super.onStart()
+        dessertTimer.startTimer()
 
         Timber.i("onStart called")
     }
